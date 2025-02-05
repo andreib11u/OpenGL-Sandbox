@@ -1,10 +1,8 @@
 #include "App.h"
 
-
 int main()
 {
 	App& app = App::Get();
-
 
 	if (app.Init())
 	{
@@ -15,4 +13,3 @@ int main()
 
 	return 0;
 }
-

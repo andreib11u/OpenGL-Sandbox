@@ -13,11 +13,13 @@ void RenderObject::StoreVerticesOnGPU()
 	glBindBuffer(GL_ARRAY_BUFFER, _vbo);
 
 	// copy data to gpu
-	glBufferData(GL_ARRAY_BUFFER, sizeof(core::point) * _vertices.size(), _vertices.data(), static_cast<uint32_t>(_draw_type));
+	glBufferData(GL_ARRAY_BUFFER, sizeof(core::point) * _vertices.size(), _vertices.data(),
+				 static_cast<uint32_t>(_draw_type));
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * _indices.size(), _indices.data(), static_cast<uint32_t>(_draw_type));
-	
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * _indices.size(), _indices.data(),
+				 static_cast<uint32_t>(_draw_type));
+
 	// instruct how to read that data
 	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 3 * sizeof(float), (void*)0);
 	glEnableVertexAttribArray(0);
@@ -27,7 +29,8 @@ void RenderObject::StoreVerticesOnGPU()
 	glBindVertexArray(0);
 }
 
-RenderObject::RenderObject(const std::vector<core::point>& vertices, const std::vector<uint32_t>& indices, DrawType draw_type)
+RenderObject::RenderObject(const std::vector<core::point>& vertices, const std::vector<uint32_t>& indices,
+						   DrawType draw_type)
 	: _vertices(vertices)
 	, _indices(indices)
 	, _draw_type(draw_type)

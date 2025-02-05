@@ -1,11 +1,11 @@
 #pragma once
 
+#include "core_types.h"
+#include <cstdint>
 #include <memory>
 #include <string>
-#include <cstdint>
-#include <vector>
 #include <unordered_map>
-#include "core_types.h"
+#include <vector>
 
 class Shader;
 enum class ShaderType : uint32_t;
@@ -36,4 +36,3 @@ private:
 	uint32_t _id;
 	std::vector<uint32_t> _attached_shaders;
 };
-

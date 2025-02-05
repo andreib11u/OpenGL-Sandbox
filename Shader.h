@@ -25,9 +25,9 @@ public:
 	unsigned GetId() const { return _id; }
 	ShaderType GetShaderType() const { return _shader_type; }
 	bool IsValid() const;
+
 private:
 	std::string _code;
 	ShaderType _shader_type;
 	uint32_t _id = 0;
 };
-

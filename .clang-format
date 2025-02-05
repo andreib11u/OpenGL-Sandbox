@@ -9,3 +9,6 @@ PointerAlignment: Left
 PackConstructorInitializers: Never
 BreakConstructorInitializersBeforeComma: true
 BreakConstructorInitializers: BeforeComma
+AccessModifierOffset: -4
+IndentAccessModifiers: false
+EmptyLineBeforeAccessModifier: Always

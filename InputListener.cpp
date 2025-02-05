@@ -2,14 +2,11 @@
 #include <GLFW/glfw3.h>
 
 InputListener::InputListener(GLFWwindow* window)
-	: _window{ window }
+	: _window{window}
 {
 }
 
-InputListener::~InputListener()
-{
-
-}
+InputListener::~InputListener() {}
 
 void InputListener::ListenToInput()
 {

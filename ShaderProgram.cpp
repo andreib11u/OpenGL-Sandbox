@@ -50,7 +50,8 @@ ShaderProgram::~ShaderProgram()
 	glDeleteProgram(_id);
 }
 
-ShaderProgram::ShaderProgram(const ShaderProgram& other) : _attached_shaders(other._attached_shaders)
+ShaderProgram::ShaderProgram(const ShaderProgram& other)
+	: _attached_shaders(other._attached_shaders)
 {
 	_id = glCreateProgram();
 
@@ -76,7 +77,8 @@ ShaderProgram& ShaderProgram::operator=(const ShaderProgram& other)
 }
 
 ShaderProgram::ShaderProgram(ShaderProgram&& other) noexcept
-	: _id(other._id), _attached_shaders(std::move(other._attached_shaders))
+	: _id(other._id)
+	, _attached_shaders(std::move(other._attached_shaders))
 {
 }
 

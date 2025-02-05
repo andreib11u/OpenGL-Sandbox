@@ -1,33 +1,30 @@
-#include <glad/glad.h>
 #include "App.h"
-#include <cstdio>
 #include "InputListener.h"
 #include "RenderObject.h"
 #include "Shader.h"
-
+#include <cstdio>
+#include <glad/glad.h>
 
 App::App() = default;
 
 void App::SetupInput()
 {
 	_input_listener = std::make_unique<InputListener>(_window);
-	_input_listener->AddInput(GLFW_KEY_ESCAPE, KeyState::KeyDown, [&] {glfwSetWindowShouldClose(_window, true); });
+	_input_listener->AddInput(GLFW_KEY_ESCAPE, KeyState::KeyDown, [&] { glfwSetWindowShouldClose(_window, true); });
 }
 
 void App::SetupScene()
 {
-	std::vector vertices =
-	{
-		core::point {0.5f,  0.5f, 0.0f},  // top right
-		core::point {0.5f, -0.5f, 0.0f},  // bottom right
-		core::point {-0.5f, -0.5f, 0.0f},  // bottom left
-		core::point {-0.5f,  0.5f, 0.0f}   // top left 
+	std::vector vertices = {
+		core::point{0.5f, 0.5f, 0.0f},	 // top right
+		core::point{0.5f, -0.5f, 0.0f},	 // bottom right
+		core::point{-0.5f, -0.5f, 0.0f}, // bottom left
+		core::point{-0.5f, 0.5f, 0.0f}	 // top left
 	};
 
-	std::vector<uint32_t> indices =
-	{
-		0, 1, 3,   // first triangle
-		1, 2, 3    // second triangle
+	std::vector<uint32_t> indices = {
+		0, 1, 3, // first triangle
+		1, 2, 3	 // second triangle
 	};
 
 	// setup shaders
