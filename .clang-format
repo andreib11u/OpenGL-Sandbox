@@ -1,0 +1,11 @@
+IndentWidth: 4
+TabWidth: 4
+ColumnLimit: 120
+UseTab: Always
+BreakBeforeBraces: Allman
+AllowShortBlocksOnASingleLine: Never
+AllowShortFunctionsOnASingleLine: Inline
+PointerAlignment: Left
+PackConstructorInitializers: Never
+BreakConstructorInitializersBeforeComma: true
+BreakConstructorInitializers: BeforeComma
