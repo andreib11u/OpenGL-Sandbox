@@ -9,11 +9,11 @@ Goals:
  - To build a foundation for more advanced graphics programming projects.
 
 Technologies Used:
- - OpenGL: Core rendering API.
- - GLFW: Window and input management.
- - Glad: OpenGL function loading.
- - GLM: Mathematics library for graphics.
- - CMake: Build system for cross-platform compilation.
+ - **OpenGL**: Core rendering API.
+ - **GLFW**: Window and input management.
+ - **Glad**: OpenGL function loading.
+ - **GLM**: Mathematics library for graphics.
+ - **CMake**: Build system for cross-platform compilation.
 
 How to Use:
  - Clone the repository.
