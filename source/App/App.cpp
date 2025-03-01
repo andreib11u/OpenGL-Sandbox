@@ -1,9 +1,10 @@
+#include "glad/glad.h"
+
+#include "Input/InputListener.h"
+#include "Render/RenderObject.h"
+#include "Render/Shader.h"
 #include "App.h"
-#include "InputListener.h"
-#include "RenderObject.h"
-#include "Shader.h"
 #include <cstdio>
-#include <glad/glad.h>
 
 App::App() = default;
 
@@ -28,8 +29,8 @@ void App::SetupScene()
 	};
 
 	// setup shaders
-	auto vertex_shader = Shader(std::filesystem::path("shaders\\vertex_shader.glsl"), ShaderType::Vertex);
-	auto fragment_shader = Shader(std::filesystem::path("shaders\\fragment_shader.glsl"), ShaderType::Fragment);
+	auto vertex_shader = Shader(_shaders_dir / "vertex_shader.glsl", ShaderType::Vertex);
+	auto fragment_shader = Shader(_shaders_dir / "fragment_shader.glsl", ShaderType::Fragment);
 
 	_shader_program.Init();
 	_shader_program.AttachShader(vertex_shader);

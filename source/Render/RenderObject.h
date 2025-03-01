@@ -28,8 +28,8 @@ private:
 
 	std::vector<core::point> _vertices;
 	std::vector<uint32_t> _indices;
-	uint32_t _vao;
-	uint32_t _vbo;
-	uint32_t _ebo;
-	DrawType _draw_type;
+	uint32_t _vao{};
+	uint32_t _vbo{};
+	uint32_t _ebo{};
+	DrawType _draw_type{DrawType::Static};
 };

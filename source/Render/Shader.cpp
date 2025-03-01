@@ -1,6 +1,6 @@
 #include "Shader.h"
+#include "glad/glad.h"
 #include <fstream>
-#include <glad/glad.h>
 #include <sstream>
 
 void Shader::Compile()

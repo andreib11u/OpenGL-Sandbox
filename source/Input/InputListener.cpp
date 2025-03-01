@@ -1,12 +1,12 @@
 #include "InputListener.h"
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
 
 InputListener::InputListener(GLFWwindow* window)
 	: _window{window}
 {
 }
 
-InputListener::~InputListener() {}
+InputListener::~InputListener() = default;
 
 void InputListener::ListenToInput()
 {
@@ -39,7 +39,7 @@ void InputListener::ListenToInput()
 
 void InputListener::FlushAddedInput()
 {
-	for (auto [key, binding] : _input_mappings_to_add)
+	for (const auto& [key, binding] : _input_mappings_to_add)
 	{
 		auto found_mapping = _input_mappings.find(key);
 		InputAction input_action;

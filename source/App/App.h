@@ -1,9 +1,10 @@
 #pragma once
 
-#include "RenderObject.h"
-#include "ShaderProgram.h"
+#include "Render/RenderObject.h"
+#include "Render/ShaderProgram.h"
 #include "core_types.h"
-#include <GLFW/glfw3.h>
+#include "GLFW/glfw3.h"
+#include <filesystem>
 #include <memory>
 #include <string>
 
@@ -39,10 +40,13 @@ private:
 	void SetupInput();
 	void SetupScene();
 
-	GLFWwindow* _window = nullptr;
-	core::rect _viewport = {};
+	// configuration
 	core::rgba _clear_color = {0.2f, 0.3f, 0.3f, 1.0f};
 	std::string _name = "Learn OpenGL";
+	std::filesystem::path _shaders_dir = {"Shaders"};
+
+	GLFWwindow* _window = nullptr;
+	core::rect _viewport = {};
 	std::unique_ptr<InputListener> _input_listener;
 	ShaderProgram _shader_program;
 	RenderObject _square;

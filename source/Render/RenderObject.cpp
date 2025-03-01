@@ -1,8 +1,10 @@
 #include "RenderObject.h"
-#include <glad/glad.h>
+#include "glad/glad.h"
 
 void RenderObject::StoreVerticesOnGPU()
 {
+	// todo: extract binding to another funciton
+
 	// bind
 	glGenVertexArrays(1, &_vao);
 	glGenBuffers(1, &_vbo);
@@ -17,7 +19,7 @@ void RenderObject::StoreVerticesOnGPU()
 				 static_cast<uint32_t>(_draw_type));
 
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int) * _indices.size(), _indices.data(),
+	glBufferData(GL_ELEMENT_ARRAY_BUFFER, sizeof(int32_t) * _indices.size(), _indices.data(),
 				 static_cast<uint32_t>(_draw_type));
 
 	// instruct how to read that data

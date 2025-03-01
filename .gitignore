@@ -1,1 +1,6 @@
-.idea
+third-party/
+build.ninja/
+build-ninja-debug/
+build-ninja-release/
+build-ninja-rel-with-deb-info/
+
