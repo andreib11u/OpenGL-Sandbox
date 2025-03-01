@@ -5,12 +5,12 @@ This repository is my OpenGL sandbox, where I experiment with and learn OpenGL w
 
 Goals:
  - To deepen my understanding of OpenGL and computer graphics.
- - -To practice writing clean, maintainable, and reusable code.
+ - To practice writing clean, maintainable, and reusable code.
  - To build a foundation for more advanced graphics programming projects.
 
 Technologies Used:
  - OpenGL: Core rendering API.
- - -GLFW: Window and input management.
+ - GLFW: Window and input management.
  - Glad: OpenGL function loading.
  - GLM: Mathematics library for graphics.
  - CMake: Build system for cross-platform compilation.
