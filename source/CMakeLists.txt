@@ -3,19 +3,17 @@ project(OpenGLApp)
 
 set(CMAKE_CXX_STANDARD 20)
 
-set(THIRD_PARTY_DIR ${CMAKE_CURRENT_SOURCE_DIR}/../third-party)
-set(THIRD_PARTY_INCLUDE ${THIRD_PARTY_DIR}/include)
-set(THIRD_PARTY_LIB ${THIRD_PARTY_DIR}/lib)
+find_package(glad CONFIG REQUIRED)
+find_package(glfw3 CONFIG REQUIRED)
 
-set(SOURCE_FILE_EXTENSIONS "*.h;*.cpp;*.inl;*.c")
-file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS ${SOURCE_FILE_EXTENSIONS}) # todo: add more extensions
+set(SOURCE_FILE_EXTENSIONS "*.h;*.hpp;*.hxx;*.cpp;*.cxx;*.inl;*.c")
+file(GLOB_RECURSE APP_SOURCES CONFIGURE_DEPENDS ${SOURCE_FILE_EXTENSIONS})
 
 add_executable(OpenGLApp ${APP_SOURCES})
 
-target_include_directories(OpenGLApp PUBLIC ${THIRD_PARTY_INCLUDE})
 target_include_directories(OpenGLApp PUBLIC ${CMAKE_SOURCE_DIR})
-target_link_directories(OpenGLApp PRIVATE ${THIRD_PARTY_LIB})
-target_link_libraries(OpenGLApp PRIVATE glfw3)
+target_link_libraries(OpenGLApp PRIVATE glad::glad)
+target_link_libraries(OpenGLApp PRIVATE glfw)
 
 set(SHADERS_DIR ${CMAKE_BINARY_DIR})
 
