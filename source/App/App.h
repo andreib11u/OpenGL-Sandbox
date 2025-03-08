@@ -1,9 +1,10 @@
 #pragma once
 
+#include "App/Log/Log.h"
+#include "GLFW/glfw3.h"
 #include "Render/RenderObject.h"
 #include "Render/ShaderProgram.h"
 #include "core_types.h"
-#include "GLFW/glfw3.h"
 #include <filesystem>
 #include <memory>
 #include <string>
@@ -16,11 +17,7 @@ class App
 public:
 	App();
 
-	static App& Get()
-	{
-		static App app;
-		return app;
-	}
+	static App& Get();
 
 	constexpr static int window_height = 600;
 	constexpr static int window_width = 800;

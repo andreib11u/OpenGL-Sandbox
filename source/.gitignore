@@ -1,1 +1,3 @@
 .idea
+vcpkg_installed
+.PVS-Studio/*

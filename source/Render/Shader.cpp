@@ -1,7 +1,12 @@
 #include "Shader.h"
+#include "App/Log/Log.h"
+#include "Utils/StringUtils.h"
+#include "fmt/xchar.h"
 #include "glad/glad.h"
 #include <fstream>
 #include <sstream>
+
+DEFINE_LOGGER(shader)
 
 void Shader::Compile()
 {
@@ -111,13 +116,14 @@ Shader::Shader(const std::filesystem::path& path, ShaderType shader_type)
 	}
 
 	auto path_to_shader = std::filesystem::current_path() / path;
-	printf("path: %ls", path_to_shader.c_str());
+	std::string VertexType = (_shader_type == ShaderType::Fragment ? "Fragment" : "Vertex");
+	Log(log_shader, log_level::trace, fmt::format("{} shader path: {}", VertexType, path.string()));
 	std::ifstream source_file(path_to_shader);
 	if (source_file.is_open())
 	{
 		std::stringstream buffer;
 		buffer << source_file.rdbuf();
-		_code = buffer.str();
+		_code = std::move(buffer.str());
 	}
 	else
 	{
