@@ -1,10 +1,12 @@
 #include "glad/glad.h"
 
+#include "App.h"
 #include "Input/InputListener.h"
 #include "Render/RenderObject.h"
 #include "Render/Shader.h"
-#include "App.h"
-#include <cstdio>
+#include "spdlog/spdlog.h"
+
+DEFINE_LOGGER(app)
 
 App::App() = default;
 
@@ -12,6 +14,8 @@ void App::SetupInput()
 {
 	_input_listener = std::make_unique<InputListener>(_window);
 	_input_listener->AddInput(GLFW_KEY_ESCAPE, KeyState::KeyDown, [&] { glfwSetWindowShouldClose(_window, true); });
+
+	Log(log_app, log_level::debug, "Input is setup");
 }
 
 void App::SetupScene()
@@ -38,12 +42,17 @@ void App::SetupScene()
 	_shader_program.Link();
 
 	_square = RenderObject(vertices, indices);
+
+	Log(log_app, log_level::debug, "Scene is setup");
 }
 
 bool App::Init()
 {
+	Logger::Initialize();
+
 	if (!glfwInit())
 		return false;
+	Log(log_app, log_level::debug, "glfw is initialized");
 
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MAJOR, major_version);
 	glfwWindowHint(GLFW_CONTEXT_VERSION_MINOR, minor_version);
@@ -52,7 +61,7 @@ bool App::Init()
 	_window = glfwCreateWindow(window_width, window_height, _name.c_str(), nullptr, nullptr);
 	if (!_window)
 	{
-		printf("Error: glfw couldn't create a window\n");
+		Log(log_app, log_level::err, "glfw couldn't create a window");
 		glfwTerminate();
 		return false;
 	}
@@ -61,7 +70,7 @@ bool App::Init()
 
 	if (!gladLoadGLLoader((GLADloadproc)glfwGetProcAddress))
 	{
-		printf("Error: failed to initialize GLAD\n");
+		Log(log_app, log_level::err, "Failed to initialize GLAD");
 		return false;
 	}
 
@@ -76,6 +85,8 @@ bool App::Init()
 	SetupCallbacks();
 	SetupInput();
 	SetupScene();
+
+	Log(log_app, log_level::info, "App initialized");
 
 	return true;
 }
@@ -104,6 +115,9 @@ void App::Run()
 void App::Exit()
 {
 	glfwTerminate();
+
+	Log(log_app, log_level::info, "Exit called. App is shutdown");
+	Logger::Shutdown();
 }
 
 App::~App() = default;
@@ -119,4 +133,12 @@ void App::FramebufferSizeCallback(GLFWwindow* window, int width, int height)
 void App::SetupCallbacks()
 {
 	glfwSetFramebufferSizeCallback(_window, FramebufferSizeCallback);
+
+	Log(log_app, log_level::debug, "Callbacks are set");
+}
+
+App& App::Get()
+{
+	static App app;
+	return app;
 }

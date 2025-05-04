@@ -4,12 +4,18 @@ int main()
 {
 	App& app = App::Get();
 
-	if (app.Init())
+	try
 	{
-		app.Run();
+		if (app.Init())
+		{
+			app.Run();
+		}
+		app.Exit();
 	}
-
-	app.Exit();
+	catch (const std::exception& ex)
+	{
+		printf("Error: %s", ex.what());
+	}
 
 	return 0;
 }

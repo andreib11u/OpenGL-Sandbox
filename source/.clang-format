@@ -12,3 +12,4 @@ BreakConstructorInitializers: BeforeComma
 AccessModifierOffset: -4
 IndentAccessModifiers: false
 EmptyLineBeforeAccessModifier: Always
+BreakTemplateDeclarations: Yes
