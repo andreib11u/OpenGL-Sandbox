@@ -3,6 +3,6 @@
 
 namespace DateTimeUtils
 {
-	std::string GetCurrentDateTime();
+std::string GetCurrentDateTime();
 
 } // namespace DateTimeUtils

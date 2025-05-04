@@ -31,7 +31,8 @@ public:
 	InputListener& operator=(InputListener&) = delete;
 	InputListener& operator=(InputListener&&) = delete;
 
-	template <typename Callback> void AddInput(int32_t key, KeyState key_state, Callback callback);
+	template <typename Callback>
+	void AddInput(int32_t key, KeyState key_state, Callback callback);
 
 	void ListenToInput();
 	void FlushAddedInput();
@@ -42,7 +43,8 @@ private:
 	GLFWwindow* _window;
 };
 
-template <typename Callback> void InputListener::AddInput(int32_t key, KeyState key_state, Callback callback)
+template <typename Callback>
+void InputListener::AddInput(int32_t key, KeyState key_state, Callback callback)
 {
 	std::function<void()> action = callback;
 	std::pair new_pair{key_state, action};
