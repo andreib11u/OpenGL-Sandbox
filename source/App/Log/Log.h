@@ -45,19 +45,5 @@ private:
 };
 
 void Log(const Logger& log, log_level level, const std::string& message);
-void Log(const Logger& log, log_level level, const std::wstring& message);
 
 #define DEFINE_LOGGER(logger) inline const Logger log_##logger = Logger::Create(#logger);
-
-// Custom formatter for std::wstring
-template <>
-struct fmt::formatter<std::wstring> : fmt::formatter<std::string>
-{
-	template <typename FormatContext>
-	auto format(const std::wstring& wstr, FormatContext& ctx)
-	{
-		std::wstring_convert<std::codecvt_utf8<wchar_t>> converter;
-		std::string utf8_str = converter.to_bytes(wstr);
-		return fmt::formatter<std::string>::format(utf8_str, ctx);
-	}
-};

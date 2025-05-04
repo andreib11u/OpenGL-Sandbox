@@ -1,6 +1,5 @@
 #include "Shader.h"
 #include "App/Log/Log.h"
-#include "Utils/StringUtils.h"
 #include "fmt/xchar.h"
 #include "glad/glad.h"
 #include <fstream>

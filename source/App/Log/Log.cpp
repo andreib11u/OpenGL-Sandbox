@@ -1,7 +1,6 @@
 #include "Log.h"
 
 #include "Utils/DateTimeUtils.h"
-#include "Utils/StringUtils.h"
 #include "spdlog/sinks/basic_file_sink.h"
 #include "spdlog/sinks/stdout_color_sinks.h"
 #include <iostream>
@@ -108,12 +107,6 @@ void Log(const Logger& log, log_level level, const std::string& message)
 {
 	auto logger = spdlog::get(log.GetName());
 	logger->log(level, message);
-}
-
-void Log(const Logger& log, log_level level, const std::wstring& message)
-{
-	auto logger = spdlog::get(log.GetName());
-	logger->log(level, StringUtils::WstringToString(message));
 }
 
 void LoggerRegistrator::PushLogger(const Logger& logger)
